@@ -10,4 +10,16 @@ class Event extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'description', 'body', 'start_event', 'slug'];
+
+    public function photos(){ 
+
+        return $this->hasMany(Photo::class); //1:N
+
+    }
+
+    public function categories(){
+
+        return $this->belongsToMany(Category::class); // N:N
+
+    }
 }

@@ -40,6 +40,27 @@
 ## Tinker
 - php artisan tinker
 
+### Exemplo Definindo namaspace
+- namespace App\Models;
+
+### Exemplo buscando um dado
+- $e = Event::find(1);
+
+### Exemplo salvando dados em uma relação N:N
+- $e->categories()->attach([1, 2, 3]);
+
+### Exemplo deletando dados em uma relação N:N
+- $e->categories()->detach([1]);
+
+### Exemplo sync (substitui o dado)
+- $e->categories()->sync([1]);
+
+### Exemplo toggle
+-> *verifica se o parâmetro passado no array está inserido na base.
+-> Se estiver inserido, ele destrói/delta a relação
+-> Se estiver não inserido, ele cria/insere a relação
+- $e->categories()->sync([1]);
+
 ## Seeder
 - php artisan db:seed
 - php artisan make:seeder
