@@ -22,6 +22,10 @@
 - php artisan make:migration create_
 - php artisan migrate:status
 
+### Criar Migration Tabela Pivot (Relacionamento N:N)
+> colocar nome das tabelas já criadas em order alfabética
+- php artisan make:migration create_category_event_table
+
 ### Recriar Migration
 - php artisan migrate:fresh
 
@@ -56,9 +60,9 @@
 - $e->categories()->sync([1]);
 
 ### Exemplo toggle
--> *verifica se o parâmetro passado no array está inserido na base.
--> Se estiver inserido, ele destrói/delta a relação
--> Se estiver não inserido, ele cria/insere a relação
+> *verifica se o parâmetro passado no array está inserido na base.
+> Se estiver inserido, ele destrói/delta a relação
+> Se estiver não inserido, ele cria/insere a relação
 - $e->categories()->sync([1]);
 
 ## Seeder
