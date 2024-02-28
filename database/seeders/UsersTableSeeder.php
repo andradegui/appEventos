@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\User::factory(1)->create();
+         User::factory(30)->hasProfile()->create();
 
     }
 }
