@@ -2,20 +2,12 @@
 
 <hr>
 
-@if( count($events) )
+@forelse($events as $event)
 
-    <ul>
+    <li>{{ $event->title }}</li>
+
+@empty
     
-    @foreach( $events as $event )
-        
-        <li>{{ $event->title }}</li>
-        
-    @endforeach
-
-    </ul>
-
-@else
-
     <h3>Nenhum evento encontrado...</h3>
 
-@endif
+@endforelse
