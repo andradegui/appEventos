@@ -1,7 +1,8 @@
 # meusEventos
 
-- PHP 7.4
-- MySQL
+- `Laravel versão 8`
+- `PHP 7.4`
+- `MySQL`
 
 ## Quando iniciar o projeto em uma outra máquina
 - composer install
@@ -22,11 +23,14 @@
 - php artisan make:migration create_
 - php artisan migrate:status
 
-### Criar Migration Tabela Pivot (Relacionamento N:N)
-> colocar nome das tabelas já criadas em order alfabética
+### Editar Migration
+- php artisan make:migration edit_profiles_table --table=profiles
+
+### Criar migration tabela pivot (Relacionamento N:N)
+> Colocar nome das tabelas já criadas em order alfabética
 - php artisan make:migration create_category_event_table
 
-### Recriar Migration
+### Recriar migration sem dados
 - php artisan migrate:fresh
 
 ### Fazer DUMP do banco de dados
@@ -60,10 +64,24 @@
 - $e->categories()->sync([1]);
 
 ### Exemplo toggle
-> *verifica se o parâmetro passado no array está inserido na base.  
+> Verifica se o parâmetro passado no array está inserido na base.  
 > Se estiver inserido, ele destrói/delta a relação.  
 > Se estiver não inserido, ele cria/insere a relação.  
-- $e->categories()->sync([1]);
+- $e->categories()->sync([1]);  
+
+### Exemplo criando dados utilizando Factory
+- Photo::factory()->make();  
+
+### Exemplo criando dados utilizando Factory com relacionamento HasOne (1:1)
+- User::factory(3)->hasProfile()->create();
+
+### Exemplo criando dados utilizando Factory com relacionamento HasMany (1:N)
+- Event::factory()->has(Photo::factory(3))->create();
+> ou  
+- Event::factory(3)->hasPhotos(3)->create();
+
+### Exemplo criando dados utilizando Factory com relacionamento BelongsTo (partindo do Profile)
+- Profile::factory()->forUser()->create();
 
 ## Seeder
 - php artisan db:seed
