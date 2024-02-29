@@ -1,8 +1,9 @@
 # meusEventos
 
-- `Laravel versão 8`
-- `PHP 7.4`
+- `Laravel v8`
+- `PHP v7.4`
 - `MySQL`
+- `Bootstrap v4.5`
 
 ## Quando iniciar o projeto em uma outra máquina
 - composer install

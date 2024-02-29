@@ -1,13 +1,33 @@
-<h2>Eventos</h2>
+@extends('layouts.site')
 
-<hr>
+@section('title')
 
-@forelse($events as $event)
+    Principais Eventos
 
-    <li>{{ $event->title }}</li>
+@endsection
 
-@empty
-    
-    <h3>Nenhum evento encontrado...</h3>
+@section('content')
 
-@endforelse
+    <h2>Eventos</h2>
+
+    <hr>
+
+    <ul>
+
+        @forelse($events as $event)
+
+            <li>
+                <strong>
+                    {{ $event->title }}
+                </strong>
+            </li>
+
+        @empty
+            
+            <h3>Nenhum evento encontrado...</h3>
+
+        @endforelse
+
+    </ul>
+
+@endsection
