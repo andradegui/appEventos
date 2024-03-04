@@ -5,9 +5,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 
     $events = \App\Models\Event::all();
+    // $events = [];
 
     // return view('welcome', ['events' => $events]);
     return view('welcome', compact('events'));
+});
+
+Route::get('/eventos/{slug}', function ($slug) {
+
+    $event = \App\Models\Event::whereSlug($slug)->first();
+    return view('event', compact('event'));
+
 });
 
 Route::get('/hello', function () {
