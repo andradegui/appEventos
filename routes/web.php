@@ -2,21 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
-    $events = \App\Models\Event::all();
-    // $events = [];
-
-    // return view('welcome', ['events' => $events]);
-    return view('welcome', compact('events'));
-});
-
-Route::get('/eventos/{slug}', function ($slug) {
-
-    $event = \App\Models\Event::whereSlug($slug)->first();
-    return view('event', compact('event'));
-
-});
+Route::get('/eventos/{slug}', [\App\Http\Controllers\HomeController::class, 'show']);
 
 Route::get('/hello', function () {
     return 'Hello World';
