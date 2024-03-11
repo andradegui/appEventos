@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index']);
 
-Route::get('/eventos/{slug}', [\App\Http\Controllers\HomeController::class, 'show']);
+Route::get('/eventos/{slug}', [\App\Http\Controllers\Admin\HomeController::class, 'show']);
 
 Route::get('/hello', function () {
     return 'Hello World';
@@ -71,8 +71,8 @@ Route::get('/queries/{event?}', function ($event = null) {
 
 });
 
-Route::get('/event/index', [\App\Http\Controllers\EventController::class, 'index']);
-Route::get('/event/store', [\App\Http\Controllers\EventController::class, 'store']);
-Route::get('/event/update/{event}', [\App\Http\Controllers\EventController::class, 'update']);
-Route::get('/event/destroy/{event}', [\App\Http\Controllers\EventController::class, 'destroy']);
+Route::get('/admin/events/index', [\App\Http\Controllers\Admin\EventController::class, 'index']);
+Route::get('/admin/events/store', [\App\Http\Controllers\Admin\EventController::class, 'store']);
+Route::get('/admin/events/update/{event}', [\App\Http\Controllers\Admin\EventController::class, 'update']);
+Route::get('/admin/events/destroy/{event}', [\App\Http\Controllers\Admin\EventController::class, 'destroy']);
 
