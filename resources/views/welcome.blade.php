@@ -36,7 +36,7 @@
     
                         <p class="card-text">{{ $event->description }}</p>
 
-                        <a href="/eventos/{{ $event->slug }}" class="btn btn-info">Ver Evento</a>
+                        <a href="/eventos/{{ $event->slug }}" class="btn btn-dark">Ver Evento</a>
 
                     </div>
 
