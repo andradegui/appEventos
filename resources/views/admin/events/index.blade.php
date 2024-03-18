@@ -38,6 +38,8 @@
         
             </table>
 
+            {{ $events->links() }}
+
         </div>
 
     </div>
