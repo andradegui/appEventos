@@ -1,10 +1,15 @@
 @extends('layouts.app')
 
-@section('title') Meus Eventos - @endsection
+@section ('title') Meus Eventos @endsection
 
 @section('content')
 
     <div class="row">
+
+        <div class="col-12 d-flex justify-content-between align-items-center my-5">
+            <h2>Meus Eventos</h2>
+            <a href="/admin/events/store" class="btn btn-success">Criar Evento</a>
+        </div>
 
         <div class="col-12">
 

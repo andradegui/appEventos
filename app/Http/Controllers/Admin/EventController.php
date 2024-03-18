@@ -17,7 +17,15 @@ class EventController extends Controller
 
     }
 
+    public function create(){
+
+        return view('admin.events.create');
+
+    }
+
     public function store(){
+
+        dd('Cheguei no método store' . __METHOD__);
 
          $event = [
             'title' => 'Evento via AS ' . rand(1, 100),
