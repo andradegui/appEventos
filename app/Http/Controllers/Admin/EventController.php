@@ -37,6 +37,13 @@ class EventController extends Controller
 
     }
 
+    public function edit($event){
+
+        $event = Event::findOrFail($event);
+
+        return view('admin.events.edit', compact('event'));
+    }
+
     public function update($event){
 
         // Atualizando com Mass Assignment
