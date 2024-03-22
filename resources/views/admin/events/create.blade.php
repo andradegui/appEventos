@@ -29,6 +29,8 @@
                     <label for="">Nome evento:</label>
                     <input name="title" id="title" type="text" class="form-control">
 
+                </div>
+
                 <div class="form-group">
 
                     <label for="">Descrição:</label>
