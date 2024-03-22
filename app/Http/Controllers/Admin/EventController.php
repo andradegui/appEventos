@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class EventController extends Controller
@@ -25,18 +26,14 @@ class EventController extends Controller
 
     public function store(){
 
-        dd('Cheguei no método store' . __METHOD__);
+        $event = request()->all();
 
-         $event = [
-            'title' => 'Evento via AS ' . rand(1, 100),
-            'description' => 'Descrição evento...',
-            'body' => 'Conteúdo evento...',
-            'start_event' => date('Y-m-d H:i:s'),
-            'slug' => 'evento-via-as',
-        ];
-        
+        // Configuração p/ pegar o slug p/ colocar na ULR
+        $event['slug'] = Str::slug($event['title']);
 
-        return Event::create($event);
+        Event::create($event);
+
+        return redirect()->to('/admin/events/index');
 
     }
 
