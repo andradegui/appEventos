@@ -46,25 +46,21 @@ class EventController extends Controller
 
     public function update($event){
 
-        // Atualizando com Mass Assignment
-        $eventData = [
-            'title' => 'Atualizando Evento via AS '. rand(1, 100),
-            // 'description' => 'Descrição evento...',
-            // 'body' => 'Conteúdo evento...',
-            // 'start_event' => date('Y-m-d H:i:s'),
-            // 'slug' => 'atualizando-evento-via-as',
-        ];
+        $event = Event::findOrFail($event);
 
-        $event = Event::find($event);
-        $event->update($eventData);
-        return $event;
+        $event->update(request()->all());
+
+        return redirect()->back();
         
     }
 
     public function destroy($event){
         
-        $eventSearch = Event::findOrFail($event);    
-        return $eventSearch->delete();
+        $event = Event::findOrFail($event);
+
+        $event->delete();
+
+        return redirect()->to('/admin/events/index');
 
     }
 }

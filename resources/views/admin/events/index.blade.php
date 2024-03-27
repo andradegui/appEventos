@@ -20,6 +20,7 @@
                         <th>#</th>
                         <th>Evento</th>
                         <th>Criado Em</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
         
@@ -30,6 +31,12 @@
                             <td>{{ $event->id }}</td>
                             <td>{{ $event->title }}</td>
                             <td>{{ $event->created_at }}</td>
+                            <td>
+
+                                <a href="/admin/events/{{ $event->id }}/edit" class="btn btn-warning">Editar</a>
+                                <a href="/admin/events/destroy/{{ $event->id }}" class="btn btn-danger">Remover</a>
+
+                            </td>
                         </tr>
         
                         @empty
