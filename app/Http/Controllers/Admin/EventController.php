@@ -60,7 +60,7 @@ class EventController extends Controller
 
         $event->delete();
 
-        return redirect()->to('/admin/events/index');
+        return redirect()->to('/admin/events/');
 
     }
 }

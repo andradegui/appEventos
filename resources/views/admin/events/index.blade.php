@@ -8,7 +8,7 @@
 
         <div class="col-12 d-flex justify-content-between align-items-center my-5">
             <h2>Meus Eventos</h2>
-            <a href="/admin/events/create" class="btn btn-success">Criar Evento</a>
+            <a href="{{route('admin.events.create')}}" class="btn btn-success">Criar Evento</a>
         </div>
 
         <div class="col-12">
@@ -33,8 +33,9 @@
                             <td>{{ $event->created_at }}</td>
                             <td>
 
-                                <a href="/admin/events/{{ $event->id }}/edit" class="btn btn-warning">Editar</a>
-                                <a href="/admin/events/destroy/{{ $event->id }}" class="btn btn-danger">Remover</a>
+                                {{-- <a href="{{route('admin.events.edit', $event)}}" class="btn btn-warning">Editar</a> --}}
+                                <a href="{{route('admin.events.edit', ['event' => $event->id])}}" class="btn btn-warning">Editar</a>
+                                <a href="{{route('admin.events.destroy', ['event' => $event->id])}}" class="btn btn-danger">Remover</a>
 
                             </td>
                         </tr>

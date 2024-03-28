@@ -14,8 +14,7 @@
             
         </div>
         
-        <a href="/admin/events/index" class="btn btn-dark">Voltar</a>     
-
+        <a href="{{route('admin.events.index')}}" class="btn btn-dark">Voltar</a>     
         
     </div>
 
@@ -24,7 +23,7 @@
         <div class="col-12">
 
             
-            <form action="/admin/events/update/{{ $event->id }}" method="post">
+            <form action="{{route('admin.events.update', ['event' => $event->id])}}" method="post">
                 
                 @csrf
 
