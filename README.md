@@ -15,6 +15,9 @@
 ## Subir servidor
 - php artisan serve
 
+## Listar Rotas
+- php artisan route:listj
+
 ## Migrations
 
 - php artisan migrate:install
