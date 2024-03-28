@@ -24,9 +24,9 @@ class EventController extends Controller
 
     }
 
-    public function store(){
+    public function store(Request $request){
 
-        $event = request()->all();
+        $event = $request->all();
 
         // Configuração p/ pegar o slug p/ colocar na ULR
         $event['slug'] = Str::slug($event['title']);
@@ -44,11 +44,11 @@ class EventController extends Controller
         return view('admin.events.edit', compact('event'));
     }
 
-    public function update($event){
+    public function update($event, Request $request){
 
         $event = Event::findOrFail($event);
 
-        $event->update(request()->all());
+        $event->update($request->all());
 
         return redirect()->back();
         
