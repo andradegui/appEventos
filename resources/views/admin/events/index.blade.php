@@ -17,7 +17,7 @@
         
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>ID</th>
                         <th>Evento</th>
                         <th>Criado Em</th>
                         <th>Ações</th>
