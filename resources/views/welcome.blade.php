@@ -10,7 +10,7 @@
 
     <div class="row">
 
-        <div class="col-12">
+        <div class="col-12 my-5">
 
             <h2>Eventos</h2>
 
@@ -36,7 +36,7 @@
     
                         <p class="card-text">{{ $event->description }}</p>
 
-                        <a href="/eventos/{{ $event->slug }}" class="btn btn-dark">Ver Evento</a>
+                        <a href="{{route('event.single', ['slug' => $event->slug])}}" class="btn btn-dark">Ver Evento</a>
 
                     </div>
 
