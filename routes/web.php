@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
-// Route::get('/eventos/{slug}', [\App\Http\Controllers\Admin\HomeController::class, 'show']);
+Route::get('/eventos/{slug}', [\App\Http\Controllers\HomeController::class, 'show'])->name('event.single');
 
 Route::get('/hello', function () {
     return 'Hello World';
