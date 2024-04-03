@@ -26,6 +26,14 @@ class EventController extends Controller
 
     public function store(Request $request){
 
+        // Configuração p/ validações nos inputs
+        $request->validate([
+            'title' => 'required|min:5',
+            'description' => 'required',
+            'body' => 'required',
+            'start_event' => 'required',
+        ]);
+
         $event = $request->all();
 
         // Configuração p/ pegar o slug p/ colocar na ULR
