@@ -17,6 +17,26 @@
 
     </div>
 
+    {{-- @dd($errors); --}}
+    {{-- @dump($errors-); --}}
+    {{-- @dump($errors->all()); --}}
+
+    {{-- @if( $errors->any() )
+
+        <div class="alert alert-danger">
+
+            <ul>
+
+            @foreach( $errors->all() as $error )
+                <li>{{ $error }}</li>
+            @endforeach
+
+            </ul>
+
+        </div>
+
+    @endif --}}
+
     <div class="row">
 
         <div class="col-12">
@@ -28,7 +48,15 @@
                 <div class="form-group">
     
                     <label for="">Nome evento:</label>
-                    <input name="title" id="title" type="text" class="form-control">
+                    <input name="title" id="title" type="text" class="form-control @if( $errors->has('title')) is-invalid @endif )">
+
+                    @if( $errors->has('title') )
+
+                        @foreach($errors->get('title') as $error)
+                            {{$error}}
+                        @endforeach
+
+                    @endif
 
                 </div>
 
