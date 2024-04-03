@@ -1,7 +1,7 @@
 # meusEventos
 
 - `Laravel v8`
-- `PHP v7.4`
+- `PHP v8.2`
 - `MySQL`
 - `Bootstrap v4.5`
 
@@ -16,7 +16,7 @@
 - php artisan serve
 
 ## Listar Rotas
-- php artisan route:listj
+- php artisan route:list
 
 ## Migrations
 
