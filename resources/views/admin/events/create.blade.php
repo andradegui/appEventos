@@ -48,36 +48,60 @@
                 <div class="form-group">
     
                     <label for="">Nome evento:</label>
-                    <input name="title" id="title" type="text" class="form-control @if( $errors->has('title')) is-invalid @endif )">
+                    <input name="title" id="title" type="text" class="form-control @error('title') is-invalid @enderror">
 
-                    @if( $errors->has('title') )
+                    @error('title')
 
-                        @foreach($errors->get('title') as $error)
-                            {{$error}}
-                        @endforeach
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
 
-                    @endif
+                    @enderror
 
                 </div>
 
                 <div class="form-group">
 
                     <label for="">Descrição:</label>
-                    <input name="description" id="description" type="text" class="form-control">
+                    <input name="description" id="description" type="text" class="form-control @error('description') is-invalid @enderror">
+
+                    @error('description')
+
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+
+                    @enderror
 
                 </div>      
 
                 <div class="form-group">
                     
                     <label for="">Fale + sobre as atrações evento:</label>
-                    <textarea name="body" id="body" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="body" id="body" cols="30" rows="10" class="form-control @error('body') is-invalid @enderror"></textarea>
+
+                    @error('body')
+
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+
+                    @enderror
 
                 </div>    
 
                 <div class="form-group">
 
                     <label for="">Quando vai acontecer?</label>
-                    <input name="start_event" id="start_event" type="text" class="form-control">
+                    <input name="start_event" id="start_event" type="text" class="form-control @error('start_event') is-invalid @enderror">
+
+                    @error('start_event ')
+
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+
+                    @enderror
                     
                 </div>    
         
