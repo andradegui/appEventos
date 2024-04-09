@@ -46,7 +46,8 @@
                 @csrf
 
                 <div class="form-group">
-    
+
+                    {{-- Nome Evento --}}
                     <label for="">Nome evento:</label>
                     <input name="title" id="title" type="text" class="form-control @error('title') is-invalid @enderror">
 
@@ -60,6 +61,7 @@
 
                 </div>
 
+                {{-- Descrição --}}
                 <div class="form-group">
 
                     <label for="">Descrição:</label>
@@ -73,8 +75,9 @@
 
                     @enderror
 
-                </div>      
+                </div>
 
+                {{-- Body --}}
                 <div class="form-group">
                     
                     <label for="">Fale + sobre as atrações evento:</label>
@@ -90,6 +93,7 @@
 
                 </div>    
 
+                {{-- Start_event --}}
                 <div class="form-group">
 
                     <label for="">Quando vai acontecer?</label>
