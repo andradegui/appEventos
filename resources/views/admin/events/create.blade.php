@@ -95,7 +95,7 @@
                     <label for="">Quando vai acontecer?</label>
                     <input name="start_event" id="start_event" type="text" class="form-control @error('start_event') is-invalid @enderror">
 
-                    @error('start_event ')
+                    @error('start_event')
 
                         <div class="invalid-feedback">
                             {{$message}}
