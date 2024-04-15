@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\EventPhotoController;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
@@ -75,5 +76,6 @@ Route::get('/queries/{event?}', function ($event = null) {
 Route::prefix('/admin')->name('admin.')->group(function(){
 
     Route::resource('events', EventController::class);
+    Route::resource('events.photos', EventPhotoController::class);
 
 });
