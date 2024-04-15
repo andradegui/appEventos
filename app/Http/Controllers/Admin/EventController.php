@@ -10,10 +10,20 @@ use App\Http\Controllers\Controller;
 
 class EventController extends Controller
 {
+    private $event;
+
+
+    public function __construct(Event $event){
+
+        $this->event = $event;
+
+    }
+
     public function index(){
 
         // $events = Event::all();
-        $events = Event::paginate(10);
+        // $events = Event::paginate(10);
+        $events = $this->event->paginate(10);
 
         return view('admin.events.index', compact('events'));
 
@@ -38,7 +48,7 @@ class EventController extends Controller
         // Configuração p/ pegar o slug p/ colocar na ULR
         $event['slug'] = Str::slug($event['title']);
 
-        Event::create($event);
+        $this->event->create($event);
 
         return redirect()->route('admin.events.index');
 
@@ -46,14 +56,14 @@ class EventController extends Controller
 
     public function edit($event){
 
-        $event = Event::findOrFail($event);
+        $event = $this->event->findOrFail($event);
 
         return view('admin.events.edit', compact('event'));
     }
 
     public function update($event, EventRequest $request){
 
-        $event = Event::findOrFail($event);
+        $event = $this->event->findOrFail($event);
 
         $event->update($request->all());
 
@@ -63,7 +73,7 @@ class EventController extends Controller
 
     public function destroy($event){
         
-        $event = Event::findOrFail($event);
+        $event = $this->event->findOrFail($event);
 
         $event->delete();
 
