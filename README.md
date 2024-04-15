@@ -18,6 +18,9 @@
 ## Listar Rotas
 - php artisan route:list
 
+> Filtrar rotas da aplicação
+- php artisan route:list --name=events.
+
 ## Migrations
 
 - php artisan migrate:install
@@ -48,6 +51,9 @@
 
 ## Controller
 - php artisan make:controller *NomeController*
+
+>Cria  a controller com todos os métodos necessários 
+- php artisan make:controller *NomeController* -r
 
 ## Tinker
 - php artisan tinker
