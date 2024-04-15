@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\EventController;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
@@ -73,21 +74,6 @@ Route::get('/queries/{event?}', function ($event = null) {
 
 Route::prefix('/admin')->name('admin.')->group(function(){
 
-    Route::prefix('/events')->name('events.')->group(function(){
-
-        Route::get('/', [\App\Http\Controllers\Admin\EventController::class, 'index'])->name('index');
-        
-        Route::get('/create', [\App\Http\Controllers\Admin\EventController::class, 'create'])->name('create');
-        Route::post('/store', [\App\Http\Controllers\Admin\EventController::class, 'store'])->name('store');
-        
-        Route::get('/{event}/edit', [\App\Http\Controllers\Admin\EventController::class, 'edit'])->name('edit');
-        Route::post('/update/{event}', [\App\Http\Controllers\Admin\EventController::class, 'update'])->name('update');
-        
-        Route::get('/destroy/{event}', [\App\Http\Controllers\Admin\EventController::class, 'destroy'])->name('destroy');
-
-    });
-
+    Route::resource('events', EventController::class);
 
 });
-
-

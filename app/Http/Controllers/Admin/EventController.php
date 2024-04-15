@@ -19,6 +19,12 @@ class EventController extends Controller
 
     }
 
+    public function show($event){
+
+        return 'Evento: ' . $event;
+
+    }
+
     public function create(){
 
         return view('admin.events.create');
