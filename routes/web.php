@@ -8,11 +8,22 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('i
 
 Route::get('/eventos/{slug}', [\App\Http\Controllers\HomeController::class, 'show'])->name('event.single');
 
-Route::get('/hello', function () {
-    return 'Hello World';
+Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function(){
+
+    Route::resource('events', EventController::class);
+    Route::resource('events.photos', EventPhotoController::class);
+
 });
 
-Route::get('/queries/{event?}', function ($event = null) {
+Auth::routes();
+
+Route::get('/home', [\App\Http\Controllers\Admin\EventController::class, 'index'])->name('index');
+
+// Route::get('/hello', function () {
+//     return 'Hello World';
+// });
+
+// Route::get('/queries/{event?}', function ($event = null) {
 
     // $events = \App\Models\Event::all();
 
@@ -71,11 +82,4 @@ Route::get('/queries/{event?}', function ($event = null) {
     // Buscando dados com o Eloquent
     // return \App\Models\Event::orderBy('id', 'DESC')->limit(3)->get();
 
-});
-
-Route::prefix('/admin')->name('admin.')->group(function(){
-
-    Route::resource('events', EventController::class);
-    Route::resource('events.photos', EventPhotoController::class);
-
-});
+// });

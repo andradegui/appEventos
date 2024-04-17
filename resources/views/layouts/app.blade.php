@@ -132,7 +132,11 @@
     </button>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="{{route('index')}}">Sair</a>
+            <a class="nav-link" href="{{route('index')}}" onclick="event.preventDefault(); document.getElementById('logout').submit()">Sair</a>
+
+            <form action="{{route('logout')}}" method="post" id="logout">
+                @csrf
+            </form>
         </li>
     </ul>
 </nav>
