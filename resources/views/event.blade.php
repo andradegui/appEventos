@@ -18,7 +18,7 @@
             
         </div>
 
-        <a href="{{route('index')}}" class="btn btn-dark">Voltar</a>        
+        <a href="{{route('home')}}" class="btn btn-dark">Voltar</a>        
 
     </div>
 
