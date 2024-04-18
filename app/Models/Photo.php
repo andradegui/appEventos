@@ -13,7 +13,7 @@ class Photo extends Model
 
     public function event(){
 
-        return $this->belongsTo(Event::class); //N:1
+        return $this->belongsTo(Event::class); //1:1 | UMA foto pertence a 1 Event
 
     }
 }
