@@ -24,4 +24,10 @@ class Event extends Model
         return $this->belongsToMany(Category::class); // N:N
 
     }
+
+    public function owner(){
+
+        return $this->belongsTo(User::class); // 1:1 | 1 evento pertence a 1 User
+
+    }
 }
