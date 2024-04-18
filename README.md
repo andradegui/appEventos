@@ -30,6 +30,9 @@
 - php artisan make:migration create_
 - php artisan migrate:status
 
+#### Criar Migrations junto com as Seeder
+- php artisan migrate:refresh --seed
+
 ### Editar Migration
 - php artisan make:migration edit_profiles_table --table=profiles
 
