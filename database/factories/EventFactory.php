@@ -19,7 +19,7 @@ class EventFactory extends Factory
         return [
             'title' => $name,
             'description' => $this->faker->words(7, true),
-            'body' => $this->faker->paragraph,
+            'body' => $this->faker->paragraph(2),
             'start_event' => now(),
             'slug' => Str::slug($name)
         ];
