@@ -21,9 +21,8 @@ class EventController extends Controller
 
     public function index(){
 
-        // $events = Event::all();
-        // $events = Event::paginate(10);
-        $events = $this->event->paginate(10);
+        // Lista apenas os eventos do usuário logado
+        $events = auth()->user()->events()->paginate(10);
 
         return view('admin.events.index', compact('events'));
 
@@ -48,7 +47,11 @@ class EventController extends Controller
         // Configuração p/ pegar o slug p/ colocar na ULR
         $event['slug'] = Str::slug($event['title']);
 
-        $this->event->create($event);
+        $event = $this->event->create($event);
+
+        // Configuração p/ salvar usuário que é dono do evento
+        $event->owner()->associate(auth()->user());
+        $event->save();
 
         return redirect()->route('admin.events.index');
 
