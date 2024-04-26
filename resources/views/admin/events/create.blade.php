@@ -49,7 +49,7 @@
 
                     {{-- Nome Evento --}}
                     <label for="">Nome evento:</label>
-                    <input name="title" id="title" type="text" class="form-control @error('title') is-invalid @enderror">
+                    <input name="title" id="title" type="text" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}">
 
                     @error('title')
 
@@ -65,7 +65,7 @@
                 <div class="form-group">
 
                     <label for="">Descrição:</label>
-                    <input name="description" id="description" type="text" class="form-control @error('description') is-invalid @enderror">
+                    <input name="description" id="description" type="text" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}">
 
                     @error('description')
 
@@ -81,7 +81,7 @@
                 <div class="form-group">
                     
                     <label for="">Fale + sobre as atrações evento:</label>
-                    <textarea name="body" id="body" cols="30" rows="10" class="form-control @error('body') is-invalid @enderror"></textarea>
+                    <textarea name="body" id="body" cols="30" rows="10" class="form-control @error('body') is-invalid @enderror">{{old('body')}}</textarea>
 
                     @error('body')
 
@@ -97,7 +97,7 @@
                 <div class="form-group">
 
                     <label for="">Quando vai acontecer?</label>
-                    <input name="start_event" id="start_event" type="text" class="form-control @error('start_event') is-invalid @enderror">
+                    <input name="start_event" id="start_event" type="text" class="form-control @error('start_event') is-invalid @enderror" value="{{old('start_event')}}">
 
                     @error('start_event')
 
