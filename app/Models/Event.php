@@ -30,4 +30,10 @@ class Event extends Model
         return $this->belongsTo(User::class); // 1:1 | 1 evento pertence a 1 User
 
     }
+
+    public function getOwnerNameAttribute(){ //owner_name
+
+        return $this->owner->name;
+
+    }
 }
