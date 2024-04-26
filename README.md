@@ -102,3 +102,13 @@
 
 ## Factory
 - php artisan make:factory 
+
+## Colocando autenticação na aplicação
+- composer require laravel/ui
+- php artisan ui: bootstrap --auth
+- npm i 
+- npm run dev
+
+> verificar se irá carregar as telas
+- http://127.0.0.1:8000/login
+- http://127.0.0.1:8000/register
