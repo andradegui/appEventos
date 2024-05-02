@@ -30,7 +30,7 @@
                         <tr>
                             <td>{{ $event->id }}</td>
                             <td>{{ $event->title }}</td>
-                            <td>{{ $event->created_at }}</td>
+                            <td>{{ $event->created_at->format('d/m/Y') }}</td>
                             <td class="d-flex justify-content-between">
 
                                 {{-- <a href="{{route('admin.events.edit', $event)}}" class="btn btn-warning">Editar</a> --}}
