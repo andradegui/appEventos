@@ -112,3 +112,18 @@
 > verificar se irá carregar as telas
 - http://127.0.0.1:8000/login
 - http://127.0.0.1:8000/register
+
+## Configuração p/ mascara de data
+- npm i inputmask -D
+
+- em resources\js\bootstrap.js
+
+```
+/**
+ * Inputmask
+ */
+
+var Inputmask = require('inputmask');
+
+```
+- npm run dev
