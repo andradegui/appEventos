@@ -119,3 +119,20 @@
 
 
 @endsection
+
+
+@section('scripts')
+
+    <script>
+
+        // import '/../resources/js/bootstrap.js';
+
+        let el = document.querySelector('input[name=start_event]');
+
+        let im = new Inputmask('99/99/9999 99:99:99');
+
+        im.mask(el);
+
+    </script>
+
+@endsection
