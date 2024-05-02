@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Event extends Model
 {
@@ -34,6 +35,14 @@ class Event extends Model
     public function getOwnerNameAttribute(){ //owner_name
 
         return $this->owner->name;
+
+    }
+
+    // Mutator | Este método salva o campo slug
+    public function setTitleAttribute($value){
+
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
 
     }
 }

@@ -44,8 +44,7 @@ class EventController extends Controller
 
         $event = $request->all();
 
-        // Configuração p/ pegar o slug p/ colocar na ULR
-        $event['slug'] = Str::slug($event['title']);
+        // No momento o slug está sendo pego pela método setTitleAttribute na model de Event
 
         $event = $this->event->create($event);
 
