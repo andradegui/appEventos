@@ -17,6 +17,8 @@ class EventController extends Controller
 
         $this->event = $event;
 
+        $this->middleware('user.can.event.edit')->only('update');
+
     }
 
     public function index(){
