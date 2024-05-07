@@ -15,6 +15,7 @@ class Event extends Model
     protected $dates = ['start_event'];
     
     //Métodos de relação com outras models
+
     public function photos(){ 
 
         return $this->hasMany(Photo::class); //1:N
@@ -34,6 +35,7 @@ class Event extends Model
     }
     
     // Accessors
+
     public function getOwnerNameAttribute(){ //owner_name
 
         return $this->owner->name;
@@ -58,6 +60,7 @@ class Event extends Model
 
     
     // Metódos criados p/ serem chamados na Controller
+
     public function getEventsHome($byCategory = null){
 
         $events = $byCategory ? $byCategory : $this->orderBy('start_event', 'DESC');
@@ -68,9 +71,11 @@ class Event extends Model
 
         }
 
-        // $events->when($search = request()->query('s'), function($queryBuilder) use($search){
-        //     return $queryBuilder->where('title', 'LIKE', '%' . $search . '%');
-        // });
+        // colocando listagem de eventos com os + recentes com SQL
+        // $events->whereRaw('DATE(start_event) >= DATE(NOW())');
+
+        // colocando listagem de eventos com os + recentes com QueryBuilder
+        $events->whereDate('start_event', '>=', now());
 
         return $events;
 
