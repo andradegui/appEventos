@@ -13,7 +13,8 @@ class Event extends Model
     protected $fillable = ['title', 'description', 'body', 'start_event', 'slug'];
 
     protected $dates = ['start_event'];
-
+    
+    //Métodos de relação com outras models
     public function photos(){ 
 
         return $this->hasMany(Photo::class); //1:N
@@ -31,14 +32,17 @@ class Event extends Model
         return $this->belongsTo(User::class); // 1:1 | 1 evento pertence a 1 User
 
     }
-
+    
+    // Accessors
     public function getOwnerNameAttribute(){ //owner_name
 
         return $this->owner->name;
 
     }
 
-    // Mutator | Este método salva o campo slug
+    // Mutators 
+    
+    // Este método salva o campo slug
     public function setTitleAttribute($value){
 
         $this->attributes['title'] = $value;
@@ -49,6 +53,26 @@ class Event extends Model
     public function setStartEventAttribute($value){
 
         $this->attributes['start_event'] = (\DateTime::createFromFormat('d/m/Y H:i', $value))->format('Y-m-d H:i');
+
+    }
+
+    
+    // Metódos criados p/ serem chamados na Controller
+    public function getEventsHome($byCategory = null){
+
+        $events = $byCategory ? $byCategory : $this->orderBy('start_event', 'DESC');
+
+        if( $query = request()->query('s') ){
+
+            $events->where('title', 'LIKE', '%' . $query . '%');
+
+        }
+
+        // $events->when($search = request()->query('s'), function($queryBuilder) use($search){
+        //     return $queryBuilder->where('title', 'LIKE', '%' . $search . '%');
+        // });
+
+        return $events;
 
     }
 }

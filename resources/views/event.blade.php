@@ -10,7 +10,7 @@
 
     <div class="row justify-content-between align-items-center">
         
-        <div class="col-10 my-5">
+        <div class="col-10">
             
             <h2>Evento :  {{ $event->title }}</h2>
             
