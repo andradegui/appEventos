@@ -41,7 +41,7 @@
 
         <div class="col-12">
             
-            <form action="{{route('admin.events.store')}}" method="post">
+            <form action="{{route('admin.events.store')}}" method="post" enctype="multipart/form-data">
                 
                 @csrf
 
@@ -107,7 +107,14 @@
 
                     @enderror
                     
-                </div>    
+                </div>
+                
+                <div class="form-group mb-4">
+
+                    <label>Banner Evento:</label>
+                    <input type="file" name="banner" class="form-control">
+
+                </div>
         
                 <button type="submit" class="btn btn-success my-2">Criar Evento</button>
 

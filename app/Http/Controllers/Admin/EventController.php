@@ -44,7 +44,11 @@ class EventController extends Controller
 
     public function store(EventRequest $request){
 
+        $banner = $request->file('banner');
+
         $event = $request->all();
+
+        $event['banner'] = $banner->store('banner', 'public');
 
         // No momento o slug está sendo pego pela método setTitleAttribute na model de Event
 
