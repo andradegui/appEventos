@@ -23,7 +23,7 @@
         <div class="col-12">
 
             
-            <form action="{{route('admin.events.update', ['event' => $event->id])}}" method="post">
+            <form action="{{route('admin.events.update', ['event' => $event->id])}}" method="post" enctype="multipart/form-data">
                 
                 @csrf
                 @method('PUT')
@@ -91,7 +91,52 @@
 
                     @enderror                    
 
-                </div>    
+                </div>
+                
+                <div class="form-group mb-4 my-5">
+
+                    <div class="row">
+
+                        <div class="col-12">
+
+                            Banner Evento:
+                            <hr>
+
+                        </div>
+
+                        <div class="col-4">
+
+                            <img src="{{asset('storage/' . $event->banner)}}" alt="Banner Evento" class="img-fluid img-thumbnail">
+
+                        </div>
+
+                        <div class="col-8 text-center justify-content-center align-content-center">
+
+                            {{-- <label>Banner Evento:</label> --}}
+                            <input type="file" name="banner" class="form-control @error('banner') is-invalid @enderror">
+
+                            {{-- <div class="custom-file">
+                                <input type="file" name="banner" class="custom-file-input @error('banner') is-invalid @enderror">
+                                <label class="custom-file-label" for="customFile">Selecionar banner</label>
+                            </div> --}}
+        
+                            @error('banner')
+        
+                                <div class="invalid-feedback">
+                                    {{$message}}
+                                </div>
+        
+                            @enderror
+
+                        </div>                        
+
+                        <div class="col-12">
+                            <hr>
+                        </div>
+
+                    </div> 
+
+                </div>
         
                 <button type="submit" class="btn btn-success my-2">Atualizar Evento</button>
 

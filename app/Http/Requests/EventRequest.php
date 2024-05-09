@@ -20,6 +20,7 @@ class EventRequest extends FormRequest
             'description' => 'required',
             'body' => 'required',
             'start_event' => 'required',
+            'banner' => 'image',
             
         ];
     }
@@ -31,6 +32,7 @@ class EventRequest extends FormRequest
             'title.required' => 'O campo nome do evento é obrigatório',
             'required' => 'Este campo é obrigatório',
             'min' => 'Este campo não atinge o mínimo de caracteres permitidos. Tamanho mínimo permitido é :min',
+            'image' => 'Arquivo deve ser do tipo png ou jpg',
             
         ];
     }

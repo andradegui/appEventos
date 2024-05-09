@@ -112,7 +112,15 @@
                 <div class="form-group mb-4">
 
                     <label>Banner Evento:</label>
-                    <input type="file" name="banner" class="form-control">
+                    <input type="file" name="banner" class="form-control @error('banner') is-invalid @enderror">
+
+                    @error('banner')
+
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+
+                    @enderror
 
                 </div>
         

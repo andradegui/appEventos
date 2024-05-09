@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -44,11 +45,15 @@ class EventController extends Controller
 
     public function store(EventRequest $request){
 
-        $banner = $request->file('banner');
-
         $event = $request->all();
 
-        $event['banner'] = $banner->store('banner', 'public');
+        // Se o request de banner estiver preechido
+        if(  $banner = $request->file('banner') ){
+
+            // Salva img
+            $event['banner'] = $banner->store('banner', 'public');
+
+        }
 
         // No momento o slug está sendo pego pela método setTitleAttribute na model de Event
 
@@ -73,7 +78,22 @@ class EventController extends Controller
 
         $event = $this->event->findOrFail($event);
 
-        $event->update($request->all());
+        $eventData = $request->all();
+
+        if(  $banner = $request->file('banner') ){
+
+            if( Storage::disk('public')->exists($event->banner) ){
+
+                Storage::disk('public')->delete($event->banner);
+
+            }
+
+            // Salva img
+            $eventData['banner'] = $banner->store('banner', 'public');
+
+        }
+
+        $event->update($eventData);
 
         return redirect()->back();
         
