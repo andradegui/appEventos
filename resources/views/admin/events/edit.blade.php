@@ -4,14 +4,12 @@
 
 @section('content')
 
-
     <div class="row justify-content-between align-items-center">
 
         <div class="col-6 my-5">
 
             <h2>Editar evento</h2>
-
-            
+ 
         </div>
         
         <a href="{{route('admin.events.index')}}" class="btn btn-dark">Voltar</a>     
