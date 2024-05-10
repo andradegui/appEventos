@@ -20,7 +20,7 @@
                         <th>ID</th>
                         <th>Evento</th>
                         <th>Criado Em</th>
-                        <th width="12%">Ações</th>
+                        <th width="35%" class="text-center">Ações</th>
                     </tr>
                 </thead>
         
@@ -32,8 +32,9 @@
                             <td>{{ $event->title }}</td>
                             <td>{{ $event->created_at->format('d/m/Y') }}</td>
                             <td class="d-flex justify-content-between">
+                                
+                                <a href="{{route('admin.events.photos.index', ['event' => $event->id])}}" class="btn btn-primary">Carregar Fotos</a>
 
-                                {{-- <a href="{{route('admin.events.edit', $event)}}" class="btn btn-warning">Editar</a> --}}
                                 <a href="{{route('admin.events.edit', ['event' => $event->id])}}" class="btn btn-warning">Editar</a>
                                 
                                 {{-- Configuração p/ conseguir usar o resource na rota DELETE --}}
