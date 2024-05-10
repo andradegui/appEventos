@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\EventPhotoRequest;
 
 class EventPhotoController extends Controller
 {
@@ -12,9 +15,10 @@ class EventPhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index($event)
+    {   
+        $event = Event::find($event);
+        return view ('admin.events.photos', compact('event'));
     }
 
     /**
@@ -33,9 +37,25 @@ class EventPhotoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventPhotoRequest $request, $event)
     {
-        //
+        // $photos = $request->file('photos');
+
+        $uploadedPhotos = [];
+
+        // foreach( $photos as $photo ){
+        foreach( $request->file('photos') as $photo ){
+
+            $uploadedPhotos[] = ['photo' => $photo->store('events/photos', 'public')];
+
+        }
+
+        $event = Event::find($event);
+
+        $event->photos()->createMany($uploadedPhotos);
+
+        return redirect()->back();
+
     }
 
     /**
@@ -78,8 +98,26 @@ class EventPhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Event $event, $photo)
     {
-        //
+        
+        $photo = $event->photos()->find($photo);
+
+        if( !$photo ){
+
+            return redirect()->route('admin.events.index');
+
+        }
+
+        if( Storage::disk('public')->exists($photo->photo) ){
+
+            Storage::disk('public')->delete($photo->photo);
+
+        }
+
+        $photo->delete();
+
+        return redirect()->back();
+
     }
 }
