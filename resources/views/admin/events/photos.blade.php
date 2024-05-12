@@ -49,7 +49,7 @@
 
     </div>
 
-    <div class="row">
+    <div class="row mb-5">
 
         @forelse( $event->photos as $photo )
 
@@ -69,7 +69,7 @@
 
             <div class="col-12 mb-4">
 
-                <div class="alert alert-warning">Sem foto(s) pro evento...</div>
+                <strong class="alert alert-warning">Evento sem foto(s)...</strong>
 
             </div>
 
