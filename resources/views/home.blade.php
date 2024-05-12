@@ -40,7 +40,7 @@
 
                        <p>Evento organizado por: <b>{{$event->owner_name}}</b></p>
 
-                        <a href="{{route('event.single', ['slug' => $event->slug])}}" class="btn btn-dark">Ver Evento</a>
+                        <a href="{{route('event.single', ['event' => $event->slug])}}" class="btn btn-dark">Ver Evento</a>
 
                     </div>
 
