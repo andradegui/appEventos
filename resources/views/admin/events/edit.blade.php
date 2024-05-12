@@ -91,6 +91,7 @@
 
                 </div>
                 
+                {{-- Banner --}}
                 <div class="form-group mb-4 my-5">
 
                     <div class="row">
@@ -102,11 +103,24 @@
 
                         </div>
 
-                        <div class="col-4">
+                        @if( $event->banner )
 
-                            <img src="{{asset('storage/' . $event->banner)}}" alt="Banner Evento" class="img-fluid img-thumbnail">
+                            <div class="col-4">
 
-                        </div>
+                                <img src="{{asset('storage/' . $event->banner)}}" alt="Banner Evento" class="img-fluid img-thumbnail">
+
+                            </div>
+                        
+                        @else
+
+                            <div class="col-4 text-center mt-2">
+
+                                <strong class="alert alert-warning">Evento sem banner.</strong>
+
+                            </div>
+
+                        @endif
+
 
                         <div class="col-8 text-center justify-content-center align-content-center">
 
