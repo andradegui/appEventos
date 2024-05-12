@@ -15,9 +15,9 @@ class EventPhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($event)
+    public function index(Event $event)
     {   
-        $event = Event::find($event);
+        // $event = Event::find($event);
         return view ('admin.events.photos', compact('event'));
     }
 
@@ -37,7 +37,7 @@ class EventPhotoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EventPhotoRequest $request, $event)
+    public function store(EventPhotoRequest $request, Event $event)
     {
         // $photos = $request->file('photos');
 
@@ -50,7 +50,7 @@ class EventPhotoController extends Controller
 
         }
 
-        $event = Event::find($event);
+        // $event = Event::find($event);
 
         $event->photos()->createMany($uploadedPhotos);
 

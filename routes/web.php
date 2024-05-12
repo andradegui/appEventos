@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\EventPhotoController;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/eventos/{slug}', [\App\Http\Controllers\HomeController::class, 'show'])->name('event.single');
+Route::get('/eventos/{event:slug}', [\App\Http\Controllers\HomeController::class, 'show'])->name('event.single');
 
 Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function(){
 

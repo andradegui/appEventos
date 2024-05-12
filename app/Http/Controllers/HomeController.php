@@ -26,9 +26,9 @@ class HomeController extends Controller
 
     }
 
-    public function show($slug){
+    public function show(Event $event){
         
-        $event = $this->event->whereSlug($slug)->first();
+        // $event = $this->event->whereSlug($event)->first();
         return view('event', compact('event'));
 
     }

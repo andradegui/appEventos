@@ -17,9 +17,9 @@ class CheckUserHasCanAccesEventToEdit
      */
     public function handle(Request $request, Closure $next)
     {
-        $event = Event::find($request->route()->parameter('event'));
+        $event = $request->route()->parameter('event');
 
-        if( !auth()->user()->events->contains($event) ){
+        if( !auth()->user()->events->contains($request->route()->parameter('event')) ){
             abort(403);
         }
 
