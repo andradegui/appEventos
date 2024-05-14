@@ -127,3 +127,6 @@ var Inputmask = require('inputmask');
 
 ```
 - npm run dev
+
+## P/ fazer imagens aparecer
+- php artisan storage:link
