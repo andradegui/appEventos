@@ -25,7 +25,7 @@
 
                 <div class="form-group">
 
-                    <label>Cadastrar fotos do evento:</label>
+                    <label>Cadastrar foto(s) do evento:</label>
                     <input type="file" name="photos[]" class="form-control @error('photos.*') is-invalid @enderror" multiple>
 
                     @error('photos.*')
@@ -39,7 +39,7 @@
 
                 </div>
 
-                <button class="btn btn-success">Salvar fotos</button>
+                <button class="btn btn-success">Salvar foto(s)</button>
 
             </form>
 
