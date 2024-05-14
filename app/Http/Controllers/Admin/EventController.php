@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Event;
+use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
@@ -11,8 +12,8 @@ use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
+    use UploadTrait;
     private $event;
-
 
     public function __construct(Event $event){
 
@@ -51,7 +52,7 @@ class EventController extends Controller
         if(  $banner = $request->file('banner') ){
 
             // Salva img
-            $event['banner'] = $banner->store('banner', 'public');
+            $event['banner'] = $this->upload($banner, 'events/banner');
 
         }
 
@@ -89,7 +90,7 @@ class EventController extends Controller
             }
 
             // Salva img
-            $eventData['banner'] = $banner->store('banner', 'public');
+            $eventData['banner'] = $this->upload($banner, 'events/banner');
 
         }
 

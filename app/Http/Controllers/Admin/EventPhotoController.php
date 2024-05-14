@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Event;
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -10,6 +11,14 @@ use App\Http\Requests\EventPhotoRequest;
 
 class EventPhotoController extends Controller
 {
+    use UploadTrait;
+
+    public function __construct(){
+
+        $this->middleware('user.can.event.edit');
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,18 +48,15 @@ class EventPhotoController extends Controller
      */
     public function store(EventPhotoRequest $request, Event $event)
     {
-        // $photos = $request->file('photos');
 
-        $uploadedPhotos = [];
+        // Validação p/ caso o usuário tentar fazer clicar em Salvar foto(s) sem nenhum arquivo
+        if( $request ){
 
-        // foreach( $photos as $photo ){
-        foreach( $request->file('photos') as $photo ){
-
-            $uploadedPhotos[] = ['photo' => $photo->store('events/photos', 'public')];
+            return redirect()->back();
 
         }
 
-        // $event = Event::find($event);
+        $uploadedPhotos = $this->multipleFilesUploads($request->file('photos'), 'events/photos', 'photo');
 
         $event->photos()->createMany($uploadedPhotos);
 
