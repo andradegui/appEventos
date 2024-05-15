@@ -11,16 +11,30 @@
     <div class="row justify-content-between align-items-center">
         
         <div class="col-10">
-            
-            <h2>Evento :  {{ $event->title }}</h2>
-            
-            <p> Evento acontecerá em: {{ $event->start_event->format('d/m/Y H:i:s') }} </p>
-            
-        </div>
 
-        <a href="{{route('home')}}" class="btn btn-dark">Voltar</a>        
+            <h2>{{ $event->title }}</h2>
+        
+            <p> Evento acontecerá em: {{ $event->start_event->format('d/m/Y H:i:s') }} </p>    
+
+        </div>
+        
+        <a href="{{route('home')}}" class="btn btn-dark">Voltar</a> 
 
     </div>
+    
+    @if( $event->banner )
+
+        <div class="row mb-3 justify-content-between align-items-center">
+    
+            <div class="col-4">
+    
+                <img src="{{asset('storage/' . $event->banner)}}" alt="Banner Evento" class="text-center img-flid img-thumbnail">
+    
+            </div>
+    
+        </div>
+
+    @endif
 
     <div class="row">
 
@@ -37,7 +51,7 @@
                 @if( $event->photos->count() )
                     <li class="nav-item" role="presentation">
                         
-                    <a class="nav-link text-dark" id="photo-tab" data-toggle="tab" href="#photo" role="tab" aria-controls="photo" aria-selected="false">Fotos</a>
+                        <a class="nav-link text-dark" id="photo-tab" data-toggle="tab" href="#photo" role="tab" aria-controls="photo" aria-selected="false">Fotos</a>
 
                     </li>
                 @endif
@@ -59,9 +73,9 @@
 
                             @foreach($event->photos as $photo) 
 
-                                <div class="col-3">
+                                <div class="col-3 mb-5">
 
-                                    <img src="{{ $photo->photo }}" alt="Foto do evento {{ $event->title }}" class="img-fluid">
+                                    <img src="{{asset('storage/' . $photo->photo)}}" alt="Foto do evento {{ $event->title }}" class="img-fluid img-thumbnail">
 
                                 </div>
 
@@ -73,6 +87,12 @@
                 @endif
 
               </div>
+
+              {{-- <div class="mt-5 mb-5 text-center">
+      
+                  <a href="" class="btn btn btn-success">Comprar ingresso</a>
+      
+              </div> --}}
 
         </div>
 
