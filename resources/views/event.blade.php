@@ -88,11 +88,11 @@
 
               </div>
 
-              {{-- <div class="mt-5 mb-5 text-center">
+              <div class="mt-5 mb-5 text-center">
       
                   <a href="" class="btn btn btn-success">Comprar ingresso</a>
       
-              </div> --}}
+              </div>
 
         </div>
 

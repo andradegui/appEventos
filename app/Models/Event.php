@@ -33,6 +33,12 @@ class Event extends Model
         return $this->belongsTo(User::class); // 1:1 | 1 evento pertence a 1 User
 
     }
+
+    public function enrolleds(){
+
+        return $this->belongsToMany(User::class)->withPivot('reference', 'status');
+
+    }
     
     // Accessors
 

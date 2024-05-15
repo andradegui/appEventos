@@ -53,4 +53,10 @@ class User extends Authenticatable
         return $this->HasMany(Event::class, 'owner_id'); //1:N | 1 User tem muitos eventos
 
     }
+
+    public function tickets(){
+
+        return $this->belongsToMany(Event::class)->withPivot('reference', 'status');
+
+    }
 }
