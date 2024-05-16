@@ -28,7 +28,24 @@
 
                 <div class="card">
 
-                    <img src="https://via.placeholder.com/640x480.png/20co50?text=Sem%20Imagem" alt="" class="card-img-top">
+                    @if( $event->banner )
+
+                        {{-- <img src="{{asset('storage/' . $event->banner)}}" alt="" class="card-img-top img-fluid img-thumbnail" style="width: 30%; height: 15%;"> --}}
+                        {{-- <img src="{{asset('storage/' . $event->banner)}}" alt="" class="card-img-top img-fluid img-thumbnail" style="width: 350px; height: 200px;"> --}}
+
+                        {{-- <div class="col-10 text-center"> --}}
+
+                            <img  src="{{asset('storage/' . $event->banner)}}" alt="" class="img-fluid img-thumbnail">
+
+                        {{-- </div> --}}
+
+
+                    @else
+
+                        <img src="https://via.placeholder.com/640x480.png/20co50?text=Sem%20Imagem" alt="" class="card-img-top img-fluid img-thumbnail">
+
+                    @endif
+
 
                     <div class="card-body">
 
