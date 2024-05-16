@@ -1,12 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\EventPhotoController;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/eventos/{event:slug}', [\App\Http\Controllers\HomeController::class, 'show'])->name('event.single');
+
+Route::prefix('/enrollment')->name('enrollment.')->group(function(){
+
+    Route::get('/start/{event:slug}', [EnrollmentController::class, 'start'])->name('start');
+    Route::get('/confirm', [EnrollmentController::class, 'confirm'])->name('confirm')->middleware('auth');
+    Route::get('/proccess', [EnrollmentController::class, 'proccess'])->name('proccess');
+
+});
 
 Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function(){
 

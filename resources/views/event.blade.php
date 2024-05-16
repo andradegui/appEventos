@@ -24,9 +24,9 @@
     
     @if( $event->banner )
 
-        <div class="row mb-3 justify-content-between align-items-center">
+        <div class="row mb-5 justify-content-between align-items-center">
     
-            <div class="col-4">
+            <div class="col-12">
     
                 <img src="{{asset('storage/' . $event->banner)}}" alt="Banner Evento" class="text-center img-flid img-thumbnail">
     
@@ -90,7 +90,7 @@
 
               <div class="mt-5 mb-5 text-center">
       
-                  <a href="" class="btn btn btn-success">Comprar ingresso</a>
+                  <a href="{{route('enrollment.start', $event->slug)}}" class="btn btn btn-success">Comprar ingresso</a>
       
               </div>
 
