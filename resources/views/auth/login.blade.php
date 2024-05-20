@@ -54,18 +54,35 @@
                         </div>
 
                         <div class="row mb-0">
+
                             <div class="col-md-8 offset-md-4">
+
                                 <button type="submit" class="btn btn-primary">
                                     Entrar
                                 </button>
 
+                            </div>
+
+                            <div class="col-md-8 offset-md-4">
+
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        Esqueceu usa senha?
+                                        Esqueceu sua senha?
                                     </a>
-                                @endif
+                                 @endif
+                                
                             </div>
+
+                            <div class="col-md-8 offset-md-4">
+
+                                <a class="btn btn-link" href="{{ route('register') }}">
+                                    Cadastro de usuário
+                                </a>
+                                
+                            </div>
+                                
                         </div>
+
                     </form>
                 </div>
             </div>
