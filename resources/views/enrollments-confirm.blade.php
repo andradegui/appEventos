@@ -1,5 +1,11 @@
 @extends('layouts.site')
 
+@section('title')
+
+    Confirmar Evento  
+
+@endsection
+
 @section('content')
 
     <div class="row">
