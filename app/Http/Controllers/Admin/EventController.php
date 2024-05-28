@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Event;
+use App\Models\Category;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -40,7 +41,9 @@ class EventController extends Controller
 
     public function create(){
 
-        return view('admin.events.create');
+        $categories = Category::all(['id', 'name']);
+
+        return view('admin.events.create', compact('categories'));
 
     }
 
@@ -54,7 +57,7 @@ class EventController extends Controller
             // Salva img
             $event['banner'] = $this->upload($banner, 'events/banner');
 
-        }
+        }       
 
         // No momento o slug está sendo pego pela método setTitleAttribute na model de Event
 
@@ -64,6 +67,12 @@ class EventController extends Controller
         $event->owner()->associate(auth()->user());
         $event->save();
 
+        if( $categories = $request->get('categories') ){
+
+            $event->categories()->sync($categories);
+
+        }
+
         return redirect()->route('admin.events.index');
 
     }
@@ -72,7 +81,9 @@ class EventController extends Controller
 
         // $event = $this->event->findOrFail($event);
 
-        return view('admin.events.edit', compact('event'));
+        $categories = Category::all(['id', 'name']);
+
+        return view('admin.events.edit', compact('event', 'categories'));
     }
 
     public function update(Event $event, EventRequest $request){
@@ -95,6 +106,12 @@ class EventController extends Controller
         }
 
         $event->update($eventData);
+
+        if( $categories = $request->get('categories') ){
+
+            $event->categories()->sync($categories);
+
+        }
 
         return redirect()->back();
         
