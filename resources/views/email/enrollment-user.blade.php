@@ -2,7 +2,7 @@
 
     <p>
 
-        Olá <strong>{{$user->name}}</strong> tudo bem?
+        Olá <strong>{{$user->name}}</strong>, tudo bem?
         <br>
         <br>
 
