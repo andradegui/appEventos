@@ -50,6 +50,25 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
 
+        <ul class="navbar-nav">
+          @auth
+            <li class="nav-item">
+              <a href="{{route('admin.events.index')}}" class="nav-link">Meu Painel</a>
+            </li>
+          @else
+            <li class="nav-item">
+              <a href="{{route('login')}}" class="nav-link">Login</a>
+            </li>
+          @endauth
+
+          {{-- Outra forma de verficar se o usuário está logado --}}
+          {{-- @guest
+
+          @else
+              
+          @endguest --}}
+        </ul>
+
       </div>
 
     </nav>
