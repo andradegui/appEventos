@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\EventPhotoController;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -20,6 +21,9 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function(){
 
     Route::resource('events', EventController::class);
     Route::resource('events.photos', EventPhotoController::class)->only(['index', 'store', 'destroy']);
+
+    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 
 });
 

@@ -138,7 +138,7 @@
         
 
         <li class="nav-item mr-3">
-            <a href="#" class="nav-link">Meu Perfil</a>
+            <a href="{{route('admin.profile.edit')}}" class="nav-link">Meu Perfil</a>
         </li>
 
         <li class="nav-item text-nowrap">
